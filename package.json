@@ -1,0 +1,8 @@
+{
+  "name": "breakout",
+  "version": "1.0.0",
+  "description": "breakout game",
+  "main": "game.js",
+  "author": "Maxwell Anderson <maxwell.brayden.anderson@gmail.com>",
+  "license": "MIT"
+}
