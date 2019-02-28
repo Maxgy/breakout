@@ -36,15 +36,15 @@ var myBall = new Ball(canvas.width / 2, canvas.height / 1.25);
 var myPaddle = new Paddle(canvas.width / 2, canvas.height / 1.15);
 
 var bricks = []
-for (var y = 5; y < canvas.height / 2.1; y += 30) {
-    for (var x = 5; x < canvas.width; x += 80) {
+for (let y = 5; y < canvas.height / 2.1; y += 30) {
+    for (let x = 5; x < canvas.width; x += 80) {
         bricks.push(new Brick(x, y));
     }
 }
 
 function drawBricks() {
-    for (var i = 0; i < bricks.length; ++i) {
-        bricks[i].draw(ctx);
+    for (let b of bricks) {
+        b.draw(ctx);
     }
 }
 
