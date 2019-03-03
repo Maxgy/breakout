@@ -3,8 +3,8 @@ export class Ball {
         this.x = x;
         this.y = y;
         this.r = 16;
-        this.dx = 2;
-        this.dy = -2;
+        this.dx = 2.3;
+        this.dy = -2.3;
     }
 
     draw(ctx) {
@@ -21,33 +21,25 @@ export class Ball {
     }
 
     change_dx() {
-        let rand = Math.random() / 2 - 0.25;
+        let rand = Math.random();
 
-        if (this.dx < -2.5) {
-            this.dx += Math.abs(rand);
-            this.dx = -this.dx;
-        } else if (this.dx > 2.5) {
-            this.dx -= Math.abs(rand);
-            this.dx = -this.dx + rand;
+        this.dx = -this.dx;
+        if (this.dx < 0) {
+            this.dx = -2 - rand;
         } else {
-            this.dx = -this.dx + rand;
+            this.dx = 2 + rand;
         }
-        this.dy += rand / 2;
     }
 
     change_dy() {
-        let rand = Math.random() / 2 - 0.25;
+        let rand = Math.random();
 
-        if (this.dy < -2.5) {
-            this.dy += Math.abs(rand);
-            this.dy = -this.dx;
-        } else if (this.dy > 2.5) {
-            this.dy -= Math.abs(rand);
-            this.dy = -this.dy + rand;
+        this.dy = -this.dy;
+        if (this.dy < 0) {
+            this.dy = -2 - rand;
         } else {
-            this.dy = -this.dy + rand;
+            this.dy = 2 + rand;
         }
-        this.dx += rand / 2;
     }
 
     edge_collide(canvas) {
@@ -70,34 +62,31 @@ export class Ball {
     hit_paddle(paddle) {
         if (this.y > paddle.y - this.r &&
             this.x > paddle.x &&
-            this.x < paddle.x + paddle.w) {
-            this.dy = -this.dy;
-            this.y -= 1;
+            this.x < paddle.x + paddle.w
+        ) {
+            this.y--;
+            this.change_dy();
         }
     }
 
     break_bricks(bricks) {
         for (let i = 0; i < bricks.length; ++i) {
             let b = bricks[i];
+
             if (this.x > b.x && this.x < b.x + b.w) {
-                if (this.y < b.y + b.h + this.r &&
-                    this.y > b.y ||
-                    this.y > b.y &&
-                    this.y < b.y + b.h
+                if (this.y < b.y + b.h + this.r && this.y > b.y + b.h / 2 ||
+                    this.y > b.y - this.r && this.y < b.y + b.h / 2
                 ) {
+                    this.change_dy();
                     bricks.splice(i, 1);
-                    this.dy = -this.dy;
                 }
             }
-            if (this.y > b.y &&
-                this.y < b.y + b.h) {
-                if (this.x > b.x - this.r &&
-                    this.x < b.x + 1 ||
-                    this.x < b.x + b.h + this.r &&
-                    this.x > b.x + b.h - 1
+            if (this.y > b.y && this.y < b.y + b.h) {
+                if (this.x < b.x + b.w + this.r && this.x > b.x + b.w / 2 ||
+                    this.x > b.x - this.r && this.x < b.x + b.w / 2
                 ) {
+                    this.change_dx();
                     bricks.splice(i, 1);
-                    this.dx = -this.dx;
                 }
             }
         }

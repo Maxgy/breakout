@@ -3,7 +3,7 @@ export class Brick {
         this.x = x;
         this.y = y;
         this.w = 75;
-        this.h = 25;
+        this.h = 50;
     }
 
     draw(ctx) {

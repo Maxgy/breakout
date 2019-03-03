@@ -2,7 +2,7 @@ export class Paddle {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.w = 100;
+        this.w = 150;
         this.h = 20;
     }
 
@@ -14,11 +14,7 @@ export class Paddle {
         ctx.closePath();
     }
 
-    move(canvas, rightPressed, leftPressed) {
-        if (rightPressed && this.x < canvas.width - this.w) {
-            this.x += 1.7;
-        } else if (leftPressed && this.x > 0) {
-            this.x -= 1.7;
-        }
+    move(canvas, mouseX) {
+        this.x = mouseX;
     }
 }
