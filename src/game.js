@@ -20,7 +20,7 @@ var canvas = document.getElementById("gameCanvas"),
 
 for (let y = 0; y < 5; ++y) {
     let x = 5;
-    let canvas_width = canvas.width - 100;
+    let canvas_width = canvas.width - 125;
 
     while (x < canvas_width) {
         let w = Math.random() * 50 + 50;

@@ -13,9 +13,8 @@ h1 {
 }
 
 #gameCanvas {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+    margin: auto;
+    display: flex;
     border: 2px solid black;
     background: rgb(193, 239, 255);
 }
