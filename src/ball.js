@@ -60,12 +60,17 @@ export class Ball {
     }
 
     hit_paddle(paddle) {
-        if (this.y > paddle.y - this.r &&
-            this.x > paddle.x &&
-            this.x < paddle.x + paddle.w
-        ) {
-            this.y--;
-            this.change_dy();
+        if (this.y > paddle.y - this.r) {
+            if (this.x > paddle.x && this.x < paddle.x + paddle.w) {
+                this.y--;
+                if (this.x < paddle.x + paddle.w / 2) {
+                    this.dx = -Math.abs(this.dx);
+                    this.change_dy();
+                } else {
+                    this.dx = Math.abs(this.dx);
+                    this.change_dy();
+                }
+            }
         }
     }
 

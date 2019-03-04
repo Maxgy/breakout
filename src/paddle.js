@@ -2,7 +2,7 @@ export class Paddle {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.w = 150;
+        this.w = 175;
         this.h = 20;
     }
 
