@@ -21,37 +21,37 @@ export class Ball {
     }
 
     change_dx() {
-        let rand = Math.random();
+        let rand = Math.random() * 2;
 
         this.dx = -this.dx;
         if (this.dx < 0) {
-            this.dx = -2 - rand;
+            this.dx = -3 - rand;
         } else {
-            this.dx = 2 + rand;
+            this.dx = 3 + rand;
         }
     }
 
     change_dy() {
-        let rand = Math.random();
+        let rand = Math.random() * 2;
 
         this.dy = -this.dy;
         if (this.dy < 0) {
-            this.dy = -2 - rand;
+            this.dy = -3 - rand;
         } else {
-            this.dy = 2 + rand;
+            this.dy = 3 + rand;
         }
     }
 
     edge_collide(canvas) {
         if (this.x < this.r) {
-            this.x++;
+            this.x = this.r + 1;
             this.change_dx();
         } else if (this.x > canvas.width - this.r) {
-            this.x--;
+            this.x = canvas.width - this.r - 1;
             this.change_dx();
         }
         if (this.y < this.r) {
-            this.y++;
+            this.y = this.r + 1;
             this.change_dy();
         } else if (this.y > canvas.height - this.r) {
             alert("G A M E   O V E R");

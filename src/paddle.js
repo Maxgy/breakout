@@ -14,7 +14,7 @@ export class Paddle {
         ctx.closePath();
     }
 
-    move(canvas, mouseX) {
+    move(mouseX) {
         this.x = mouseX;
     }
 }
