@@ -6,15 +6,13 @@ export class Paddle {
         this.h = 20;
     }
 
-    draw(ctx) {
+    draw(ctx, mouseX) {
+        this.x = mouseX - this.w;
+
         ctx.beginPath();
         ctx.rect(this.x, this.y, this.w, this.h);
         ctx.fillStyle = "#FF00FF";
         ctx.fill();
         ctx.closePath();
-    }
-
-    move(mouseX) {
-        this.x = mouseX;
     }
 }

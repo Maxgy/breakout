@@ -1,15 +1,16 @@
 export class Brick {
-    constructor(x, y) {
+    constructor(x, y, w, color) {
         this.x = x;
         this.y = y;
-        this.w = 75;
+        this.w = w;
         this.h = 50;
+        this.color = color;
     }
 
     draw(ctx) {
         ctx.beginPath();
         ctx.rect(this.x, this.y, this.w, this.h);
-        ctx.fillStyle = "#00FF00";
+        ctx.fillStyle = this.color;
         ctx.fill();
         ctx.closePath();
     }

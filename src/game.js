@@ -15,12 +15,19 @@ var canvas = document.getElementById("gameCanvas"),
     mouseX = canvas.width / 2,
     myBall = new Ball(canvas.width / 2, canvas.height / 1.25),
     myPaddle = new Paddle(mouseX, canvas.height - 25),
-    bricks = [];
+    bricks = [],
+    colors = ["red", "orange", "yellow", "green", "blue"];
 
-for (let y = 100; y < canvas.height / 1.7; y += 55) {
-    for (let x = 2.5; x < canvas.width; x += 80) {
-        bricks.push(new Brick(x, y));
+for (let y = 0; y < 5; ++y) {
+    let x = 5;
+    let canvas_width = canvas.width - 100;
+
+    while (x < canvas_width) {
+        let w = Math.random() * 50 + 50;
+        bricks.push(new Brick(x, y * 55 + 100, w, colors[y]));
+        x += w + 5;
     }
+    bricks.push(new Brick(x, y * 55 + 100, canvas.width - x - 5, colors[y]));
 }
 
 function drawBricks() {
@@ -33,11 +40,10 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     myBall.draw(ctx);
-    myPaddle.draw(ctx);
+    myPaddle.draw(ctx, mouseX);
     drawBricks();
 
     myBall.move();
-    myPaddle.move(mouseX);
 
     myBall.edge_collide(canvas);
     myBall.hit_paddle(myPaddle);
