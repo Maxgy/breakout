@@ -29,11 +29,11 @@ import {
         let brickWidthOffset = canvas.width / 25;
         let brickHeight = canvas.height / 13;
         let brickYOffset = canvas.height / 6;
+        let endWidth = canvas.width - canvas.width / 10;
         for (let y = 0; y < 5; ++y) {
             let x = 4;
-            let canvasWidth = canvas.width - 125;
 
-            while (x < canvasWidth) {
+            while (x < endWidth) {
                 let w = Math.random() * brickWidthOffset + brickWidthOffset;
                 bricks.push(
                     new Brick(x, y * (brickHeight + 5) + brickYOffset, w, brickHeight, colors[y]));
