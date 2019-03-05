@@ -1,10 +1,9 @@
-html {
+body {
+    margin: 0;
     background: black;
 }
 
 #gameCanvas {
-    margin: auto;
-    display: flex;
-    border: 2px solid black;
-    background: rgb(193, 239, 255);
+    display: block;
+    background: rgb(175, 230, 255);
 }

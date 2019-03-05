@@ -1,13 +1,13 @@
 export class Paddle {
-    constructor(x, y) {
+    constructor(x, y, w, h) {
         this.x = x;
         this.y = y;
-        this.w = 175;
-        this.h = 20;
+        this.w = w;
+        this.h = h;
     }
 
     draw(ctx, mouseX) {
-        this.x = mouseX - this.w;
+        this.x = mouseX - this.w / 2;
 
         ctx.beginPath();
         ctx.rect(this.x, this.y, this.w, this.h);

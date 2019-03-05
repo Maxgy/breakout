@@ -1,9 +1,9 @@
 export class Brick {
-    constructor(x, y, w, color) {
+    constructor(x, y, w, h, color) {
         this.x = x;
         this.y = y;
         this.w = w;
-        this.h = 50;
+        this.h = h;
         this.color = color;
     }
 
